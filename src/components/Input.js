@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import './Input.css'
 import { useDispatch } from "react-redux";
 import { saveTodo } from "../features/todoSlice";
+//import { event } from "jquery";
 
 const Input = () => {
 
@@ -20,9 +21,21 @@ const Input = () => {
 
         setInput('');  // Clear the input field
     }
+    
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            addTodo();
+        }
+    }
+
     return (
         <div className="input">
-            <input type='text' value={input} onChange={event=>setInput(event.target.value)}/>
+            <input 
+                type='text' 
+                value={input} 
+                onChange={event=>setInput(event.target.value)} 
+                onKeyDown={handleKeyPress}/>
             <button onClick={addTodo}>Add</button>
 
         </div> 
