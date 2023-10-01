@@ -9,6 +9,7 @@ const Input = () => {
     const dispatch = useDispatch()
 
     const addTodo = () => {
+        if (input.trim() !== '')   // Check if input is not empty
         console.log(`Adding ${input}`)
 
         dispatch(saveTodo({
@@ -16,6 +17,8 @@ const Input = () => {
             done:false,
             id: Date.now()
         }))
+
+        setInput('');  // Clear the input field
     }
     return (
         <div className="input">
