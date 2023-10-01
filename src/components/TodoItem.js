@@ -1,28 +1,27 @@
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import './TodoItem.css';
+import { Checkbox } from '@material-ui/core';
+import { setCheck } from '../features/todoSlice';
 
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import './TodoItem.css'
-import { Checkbox } from '@material-ui/core'
-
-import { setCheck } from '../features/todoSlice'
-
-
-function TodoItem  ({ name, done, id }) {
-    const dispatch = useDispatch()
+function TodoItem({ name, done, id }) {
+    const dispatch = useDispatch();
     const handleCheck = () => {
-        dispatch(setCheck(id))
-    }
-  return (
-    <div className='todoItem'>
-        <Checkbox
-           checked={done}
-           color='primary'
-           onChange={handleCheck}
-           inputProps={{ 'aria-label': 'secondary checkbox' }}
-        />
-        <p className={done && 'todoItem--done'}>{name}</p>
-    </div>
-  )
+        dispatch(setCheck(id));
+    };
+
+    return (
+        <div className={`todoItem ${done ? 'todoItem--done' : ''}`}>
+            <Checkbox
+                checked={done}
+                color='primary'
+                onChange={handleCheck}
+                inputProps={{ 'aria-label': 'secondary checkbox' }}
+            />
+            <p>{name}</p>
+        </div>
+    );
 }
 
-export default TodoItem
+export default TodoItem;
+

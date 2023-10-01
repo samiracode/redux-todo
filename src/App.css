@@ -1,7 +1,7 @@
 .app{
     height: 100vh;
     width: 100vw;
-    background-color: rgb(168, 173, 182);
+    background-color: rgb(156, 181, 228);
     display: grid;
     place-items: center;
 }
@@ -12,9 +12,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(232, 234, 237);
+    background-color: rgb(176, 200, 234);
     border-radius: 12px;
     padding: 32px 0;
+    box-shadow: 5px 5px 10px rgba(126, 150, 184, 0.7);
+
 }
 
 .app__todoContainer{

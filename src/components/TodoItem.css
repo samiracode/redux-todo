@@ -14,4 +14,5 @@
 
 .todoItem--done {
     text-decoration: line-through;
+    order: 999; /* Set a high order value for completed tasks */
 }
