@@ -19,6 +19,7 @@ function App() {
   return(
     <div className="app">
       <div className='app__container'>
+        
         <div className='app__todoContainer'>
           {uncompletedTasks.map(item => (
             <TodoItem
