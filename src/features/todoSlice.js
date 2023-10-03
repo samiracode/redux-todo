@@ -1,8 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { act } from '@testing-library/react';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-   todoList: []
+  todoList: [],
 }
 
 const todoSlice = createSlice({
@@ -10,25 +9,29 @@ const todoSlice = createSlice({
   initialState,
   reducers: {
     saveTodo: (state, action) => {
-      state.todoList.push(action.payload)  
+      state.todoList.push(action.payload);
     },
 
     setCheck: (state, action) => {
       state.todoList.map(item => {
-        if(action.payload === item.id) {
-          if(item.done === true) {
-            item.done = false
+        if (action.payload === item.id) {
+          if (item.done === true) {
+            item.done = false;
           } else {
-            item.done = true
+            item.done = true;
           }
         }
-      })
-    }
-  }
+      });
+    },
+
+    deleteTodo: (state, action) => {
+      state.todoList = state.todoList.filter(item => item.id !== action.payload.id);
+    },
+  },
 });
 
-export const { saveTodo, setCheck } = todoSlice.actions
+export const { saveTodo, setCheck, deleteTodo } = todoSlice.actions;
 
-export const selectTodoList = state => state.todos.todoList
+export const selectTodoList = state => state.todos.todoList;
 
-export default todoSlice.reducer
+export default todoSlice.reducer;
