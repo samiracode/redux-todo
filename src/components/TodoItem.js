@@ -1,13 +1,19 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import './TodoItem.css';
-import { Checkbox } from '@material-ui/core';
-import { setCheck } from '../features/todoSlice';
+import { Checkbox, IconButton } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete'; // Import the delete icon
+import { setCheck, deleteTodo } from '../features/todoSlice'; // Import the deleteTodo action
 
 function TodoItem({ name, done, id }) {
     const dispatch = useDispatch();
+
     const handleCheck = () => {
         dispatch(setCheck(id));
+    };
+
+    const handleDelete = () => {
+        dispatch(deleteTodo({ id }));
     };
 
     return (
@@ -19,9 +25,16 @@ function TodoItem({ name, done, id }) {
                 inputProps={{ 'aria-label': 'secondary checkbox' }}
             />
             <p>{name}</p>
+            <IconButton
+                onClick={handleDelete}
+                aria-label="delete"
+            >
+                <DeleteIcon />
+            </IconButton>
         </div>
     );
 }
 
 export default TodoItem;
+
 
